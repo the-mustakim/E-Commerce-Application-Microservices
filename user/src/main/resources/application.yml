@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: user-service
+
+  mongodb:
+    uri: mongodb://localhost:27017/
+#    uri: mongodb+srv://the_mustakim:Mustakim%40123@ecom-dev-cluster.uezirp0.mongodb.net/?appName=ecom-dev-cluster
+    database: userdb
+
+management:
+  health:
+    mongodb:
+      enabled: false
+#  datasource:
+#    url: jdbc:mysql://localhost:3309/ecomapp_user_service?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+#    username: the_mustakim
+#    password: Mustakim@123
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#
+#    hikari:
+#      maximum-pool-size: 10
+#      minimum-idle: 5
+#      idle-timeout: 30000 # 30 sec
+#      max-lifetime: 1800000 # 30 min
+#      connection-timeout: 20000 # 20 sec
+#      pool-name: MyHikariCP
+#  jpa:
+#    database-platform: org.hibernate.dialect.MySQLDialect
+#    hibernate:
+#      ddl-auto: create
+#    show-sql: true
+
+server:
+  port: 8082
