@@ -1,4 +1,4 @@
-package com.info.configdemo;
+package com.info.config;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

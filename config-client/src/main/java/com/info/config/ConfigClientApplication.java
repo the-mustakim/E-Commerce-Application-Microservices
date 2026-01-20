@@ -1,13 +1,13 @@
-package com.info.configdemo;
+package com.info.config;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ConfigDemoApplication {
+public class ConfigClientApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ConfigDemoApplication.class, args);
+        SpringApplication.run(ConfigClientApplication.class, args);
     }
 
 }

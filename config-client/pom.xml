@@ -11,8 +11,8 @@
     <groupId>com.info</groupId>
     <artifactId>config-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>config-demo</name>
-    <description>config-demo</description>
+    <name>config-client</name>
+    <description>config-client</description>
     <url/>
     <licenses>
         <license/>
@@ -50,6 +50,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webmvc-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
     </dependencies>
 
