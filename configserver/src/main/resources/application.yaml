@@ -1,12 +1,63 @@
 spring:
   application:
-    name: configserver
+    name: e-commerce-config
+
+# Loading Configurations from the github or local server
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          uri: https://github.com/the-mustakim/e-commerce-config.git
+#          username: ${GIT_USER}
+#          password: ${GIT_TOKEN}
+#        default-label: main
+#---------------------------------------------------------------------------------------------------------
+# Loading Configurations from db or inserting them or updating them into db
+#  profiles:
+#    active: jdbc
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/configdb
+#    username: root
+#    password: Mustakim@123
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#  cloud:
+#    config:
+#      server:
+#        jdbc:
+#          sql: "SELECT PROP_KEY, PROP_VALUES  FROM configdb.properties where APPLICATION=? and PROFILE=? and LABEL=?;"
+#          default-label: main
+#---------------------------------------------------------------------------------------------------------
+# File based Configurations
+  profiles:
+    active: native
   cloud:
     config:
       server:
-        git:
-          uri: https://github.com/the-mustakim/E-Commerce-Application-Microservices.git
-          username: ${GIT_USER}
-          password: ${GIT_TOKEN}
+        native:
+          search-locations: file:///D:\Dublin\Interview Prep\Microservices\E-Commerce-Microservices-App\configserver\src\main\resources\config
+
+  #RabbitMQ Configs
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+#encrypt:
+#  key: "564be594c25d7e47830b30480742a0ab9b30a5b56fb092f70305a5a4e7757d65"
+
+encrypt:
+  key-store:
+    location: config-server.jks
+    password: mypass
+    alias: config-server-key
+
+
 server:
   port: 8888
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
