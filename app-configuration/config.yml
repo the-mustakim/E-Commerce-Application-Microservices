@@ -1,5 +1,0 @@
-build:
-  id: 1010101010
-  version: 10000.2.3
-  name: "Default Build"
-  type: "GIT Default Build"

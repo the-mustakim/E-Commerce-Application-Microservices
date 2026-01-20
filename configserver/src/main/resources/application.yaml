@@ -6,7 +6,7 @@ spring:
       server:
         git:
           uri: https://github.com/the-mustakim/E-Commerce-Application-Microservices.git
-          search-paths: app-configuration
-
+          username: ${GIT_USER}
+          password: ${GIT_TOKEN}
 server:
   port: 8888
