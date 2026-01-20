@@ -8,10 +8,10 @@
 		<version>4.0.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.configserver</groupId>
-	<artifactId>configserver</artifactId>
+	<groupId>com.ecommerce</groupId>
+	<artifactId>ecom-config-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>configserver</name>
+	<name>ecom-config-server</name>
 	<description>configserver</description>
 	<url/>
 	<licenses>
@@ -51,21 +51,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.mysql</groupId>
-			<artifactId>mysql-connector-j</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc-test</artifactId>
-			<scope>test</scope>
-		</dependency>
     </dependencies>
 	<dependencyManagement>
 		<dependencies>

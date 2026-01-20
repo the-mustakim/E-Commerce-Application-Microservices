@@ -5,21 +5,33 @@ spring:
     active: dev
   config:
     import: optional:configserver:http://localhost:8888
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
-build:
-  id: ${ID}
-  version: ${VERSION}
-  name: ${NAME}
+# Should be activated when we have native files in here in this config-client
+#build:
+#  id: ${ID}
+#  version: ${VERSION}
+#  name: ${NAME}
 
-
+#build:
+#  id: ${ID:default}
+#  version: ${VERSION:0.0.0}
+#  name: ${NAME:default}
+#  type: ${TYPE:default}
+#
 # BUILD_ID=4444; BUILD_NAME=NAME_TEST; BUILD_VERSION=1.0.0
+
+
 
 management:
   endpoints:
     web:
       exposure:
-        include: refresh
-
+        include: "*"
 
 server:
   port: 8084

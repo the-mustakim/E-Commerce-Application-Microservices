@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: user-service
+
+  mongodb:
+    uri: ${MONGO_URI}
+#    uri: mongodb+srv://the_mustakim:Mustakim%40123@ecom-dev-cluster.uezirp0.mongodb.net/?appName=ecom-dev-cluster
+    database: userdb
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: ${RB_USERNAME}
+    password: ${RB_PASSWORD}
+
+management:
+  health:
+    mongodb:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+server:
+  port: 8082

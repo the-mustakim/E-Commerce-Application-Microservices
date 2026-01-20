@@ -1,0 +1,1 @@
+keytool -genkeypair -alias config-server-key -keyalg RSA -dname "CN=Config Server,OU=Spring Cloud, O=Company" -keypass mypass -keystore "D:\Dublin\Interview Prep\Microservices\E-Commerce-Microservices-App\configserver\src\main\resources\config-server.jks" -storepass mypass

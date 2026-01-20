@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/config-demo/pom.xml" />
         <option value="$PROJECT_DIR$/configserver/pom.xml" />
         <option value="$PROJECT_DIR$/config-client/pom.xml" />
+        <option value="$PROJECT_DIR$/ecom-config-server/pom.xml" />
       </list>
     </option>
   </component>
