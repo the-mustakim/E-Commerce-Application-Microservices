@@ -10,7 +10,6 @@ spring:
           search-locations: file:///D:\Dublin\Interview Prep\Microservices\E-Commerce-Microservices-App\ecom-config-server\src\main\resources\config
 
   #RabbitMQ Configs
-  #RabbitMQ Configs
   rabbitmq:
     host: localhost
     port: 5672
