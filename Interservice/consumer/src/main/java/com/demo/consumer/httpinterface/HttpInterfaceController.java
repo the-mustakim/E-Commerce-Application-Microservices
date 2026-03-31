@@ -18,6 +18,4 @@ public class HttpInterfaceController {
     public String getInstance(){
         return client.getInstanceInfo();
     }
-
-
 }
