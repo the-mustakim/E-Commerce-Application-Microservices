@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/E-Commerce-Microservices-App.iml" filepath="$PROJECT_DIR$/.idea/E-Commerce-Microservices-App.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-client/config-client.iml" filepath="$PROJECT_DIR$/config-client/config-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/configserver/config-server.iml" filepath="$PROJECT_DIR$/configserver/config-server.iml" />
     </modules>
   </component>
 </project>
