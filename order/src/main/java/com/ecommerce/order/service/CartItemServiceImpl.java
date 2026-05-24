@@ -1,7 +1,12 @@
 package com.ecommerce.order.service;
 
+import com.ecommerce.order.clients.ProductServiceClient;
+import com.ecommerce.order.clients.UserServiceClient;
 import com.ecommerce.order.dto.CartItemRequest;
 import com.ecommerce.order.dto.CartItemResponse;
+import com.ecommerce.order.dto.ProductResponse;
+import com.ecommerce.order.dto.UserResponse;
+import com.ecommerce.order.exception.NotEnoughQuantityInStockException;
 import com.ecommerce.order.exception.NotFoundException;
 import com.ecommerce.order.model.CartItem;
 import com.ecommerce.order.repository.CartItemRepository;
@@ -15,25 +20,28 @@ public class CartItemServiceImpl implements CartItemService{
 
     private final CartItemRepository cartItemRepo;
 
-    public CartItemServiceImpl(CartItemRepository cartItemRepo){
+    private final ProductServiceClient productServiceClient;
+
+    private final UserServiceClient userServiceClient;
+
+    public CartItemServiceImpl(CartItemRepository cartItemRepo, ProductServiceClient productServiceClient, UserServiceClient userServiceClient){
         this.cartItemRepo = cartItemRepo;
+        this.productServiceClient = productServiceClient;
+        this.userServiceClient = userServiceClient;
     }
 
     @Override
     public void addToCart(String userId, CartItemRequest cartItemRequest) {
 
-//        Optional<Product> productOpt = productRepo.findById(cartItemRequest.getProductId());
-//        if(productOpt.isEmpty()){throw new NotFoundException("Product not found with Id: " + cartItemRequest.getProductId());}
-//
-//        Product product = productOpt.get();
-//        if(product.getStockQuantity()<cartItemRequest.getQuantity()){throw new NotEnoughQuantityInStockException("Not enough quantity in stock");}
-//
-//        Optional<User> userOpt = userRepo.findById(Long.valueOf(userId));
-//        if(userOpt.isEmpty()){throw new NotFoundException("User not found with Id: " + userId);}
-//
-//        User user = userOpt.get();
+        ProductResponse productResponse = productServiceClient.getProductDetails(String.valueOf(cartItemRequest.getProductId()));
+        if(productResponse.getId()==null){throw new NotFoundException("Product not found with Id: " + cartItemRequest.getProductId());}
 
-        CartItem existingCartItem = cartItemRepo.findByUserIdAndProductId(Long.valueOf(userId),cartItemRequest.getProductId());
+        if(productResponse.getStockQuantity()<cartItemRequest.getQuantity()){throw new NotEnoughQuantityInStockException("Not enough quantity in stock");}
+
+        UserResponse user = userServiceClient.getUserDetails(userId);
+        if(user.getId()==null){throw new NotFoundException("User not found with Id: " + userId);}
+
+        CartItem existingCartItem = cartItemRepo.findByUserIdAndProductId(userId,cartItemRequest.getProductId());
         if(existingCartItem!=null){
             //Update the quantity for existing product
             existingCartItem.setQuantity(existingCartItem.getQuantity() + cartItemRequest.getQuantity());
@@ -43,7 +51,7 @@ public class CartItemServiceImpl implements CartItemService{
         }else{
             //Add item to the cart
             CartItem cartItem = new CartItem();
-            cartItem.setUserId(Long.valueOf(userId));
+            cartItem.setUserId(userId);
             cartItem.setProductId(cartItemRequest.getProductId());
             cartItem.setQuantity(cartItemRequest.getQuantity());
             //cartItem.setPrice(product.getPrice().multiply(BigDecimal.valueOf(cartItemRequest.getQuantity())));
@@ -54,13 +62,13 @@ public class CartItemServiceImpl implements CartItemService{
 
     @Override
     public void deleteCart(String userId, Long productId) {
-//        Optional<User> userOpt = userRepo.findById(Long.valueOf(userId));
-//        if(userOpt.isEmpty()){throw new NotFoundException("User not found with Id: "+userId);}
+        UserResponse user = userServiceClient.getUserDetails(userId);
+        if(user.getId()==null){throw new NotFoundException("User not found with Id: " + userId);}
 
-//        Optional<Product> productOpt = productRepo.findById(productId);
-//        if(productOpt.isEmpty()){throw new NotFoundException("Product not found with Id: " + productOpt);}
+        ProductResponse productResponse = productServiceClient.getProductDetails(String.valueOf(productId));
+        if(productResponse.getId()==null){throw new NotFoundException("Product not found with Id: " + productId);}
 
-        CartItem existingCartItem = cartItemRepo.findByUserIdAndProductId(Long.valueOf(userId),productId);
+        CartItem existingCartItem = cartItemRepo.findByUserIdAndProductId(userId,productId);
         if(existingCartItem!=null){
             cartItemRepo.delete(existingCartItem);
         }else{
@@ -71,15 +79,15 @@ public class CartItemServiceImpl implements CartItemService{
 
     @Override
     public List<CartItemResponse> getAllCartItem(Long userId) {
-//        Optional<User> userOpt = userRepo.findById(userId);
-//        if(userOpt.isEmpty()){throw new NotFoundException("User not found with Id: "+userId);}
+        UserResponse user = userServiceClient.getUserDetails(String.valueOf(userId));
+        if(user.getId()==null){throw new NotFoundException("User not found with Id: " + userId);}
 
         return cartItemRepo.findByUserId(userId).stream().map(cartItem -> new CartItemResponse(cartItem.getId(), cartItem.getUserId(),cartItem.getProductId(),cartItem.getQuantity(),cartItem.getPrice(),cartItem.getCreatedAt(),cartItem.getUpdatedAt())).toList();
     }
 
     public List<CartItem> getCartItems(Long userId) {
-//        Optional<User> userOpt = userRepo.findById(userId);
-//        if(userOpt.isEmpty()){throw new NotFoundException("User not found with Id: "+userId);}
+        UserResponse user = userServiceClient.getUserDetails(String.valueOf(userId));
+        if(user.getId()==null){throw new NotFoundException("User not found with Id: " + userId);}
 
         return cartItemRepo.findByUserId(userId).stream().map(cartItem -> new CartItem(cartItem.getId(), cartItem.getUserId(),cartItem.getProductId(),cartItem.getQuantity(),cartItem.getPrice(),cartItem.getCreatedAt(),cartItem.getUpdatedAt())).toList();
     }

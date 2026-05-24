@@ -48,7 +48,7 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public ProductResponse getProduct(String productId) {
-        Optional<Product> productOp = productRepo.findById(Long.valueOf(productId));
+        Optional<Product> productOp = productRepo.findByIdAndActiveTrue(Long.valueOf(productId));
         if(productOp.isEmpty()){throw new NotFoundException("Product not found with Id: " + productId);}
         return mapToProductResponse(productOp.get());
     }
