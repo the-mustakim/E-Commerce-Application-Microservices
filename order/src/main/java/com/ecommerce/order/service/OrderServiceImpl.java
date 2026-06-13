@@ -35,7 +35,7 @@ public class OrderServiceImpl implements OrderService {
 //        User user = userOpt.get();
 
         // Validate for cart items
-        List<CartItem> cartItemList = cartItemService.getCartItems(Long.valueOf(userId));
+        List<CartItem> cartItemList = cartItemService.getCartItems(userId);
         if(cartItemList.isEmpty()){throw new NotFoundException("There are no cart items available for userId: " + userId);}
 
         // Calculate total price
@@ -43,7 +43,7 @@ public class OrderServiceImpl implements OrderService {
 
         // Create order
         Order order = new Order();
-        order.setUserId(Long.valueOf(userId));
+        order.setUserId(userId);
         order.setOrderStatus(OrderStatus.CONFIRMED);
         order.setTotalAmount(totalPrice);
         List<OrderItem> orderItemList = cartItemList.stream().map(cartItem -> new OrderItem(cartItem.getProductId(),cartItem.getQuantity(),cartItem.getPrice(),order)).toList();

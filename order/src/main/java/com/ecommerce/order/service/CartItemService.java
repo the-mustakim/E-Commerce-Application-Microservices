@@ -11,9 +11,9 @@ public interface CartItemService {
 
     void deleteCart(String userId, Long productId);
 
-    List<CartItemResponse> getAllCartItem(Long userId);
+    List<CartItemResponse> getAllCartItem(String userId);
 
-    List<CartItem> getCartItems(Long userId);
+    List<CartItem> getCartItems(String userId);
 
     void clear(String userId);
 }

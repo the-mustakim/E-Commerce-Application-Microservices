@@ -38,7 +38,7 @@ public class CartController {
 
 
     @GetMapping
-    public ResponseEntity<List<CartItemResponse>> getCartItem(@RequestHeader("X-USER-ID") Long userId){
+    public ResponseEntity<List<CartItemResponse>> getCartItem(@RequestHeader("X-USER-ID") String userId){
         return ResponseEntity.status(HttpStatus.OK).body(cartItemService.getAllCartItem(userId));
     }
 

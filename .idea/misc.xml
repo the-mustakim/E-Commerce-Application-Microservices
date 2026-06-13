@@ -5,17 +5,18 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/user/pom.xml" />
-        <option value="$PROJECT_DIR$/product/pom.xml" />
         <option value="$PROJECT_DIR$/order/pom.xml" />
-        <option value="$PROJECT_DIR$/config-demo/pom.xml" />
-        <option value="$PROJECT_DIR$/configserver/pom.xml" />
-        <option value="$PROJECT_DIR$/config-client/pom.xml" />
+        <option value="$PROJECT_DIR$/eureka/pom.xml" />
+        <option value="$PROJECT_DIR$/product/pom.xml" />
+        <option value="$PROJECT_DIR$/additional/Configuration/config-client/pom.xml" />
+        <option value="$PROJECT_DIR$/additional/Configuration/config-server/pom.xml" />
+        <option value="$PROJECT_DIR$/Interservice/eureka/pom.xml" />
+        <option value="$PROJECT_DIR$/Interservice/consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/Interservice/provider/pom.xml" />
         <option value="$PROJECT_DIR$/ecom-config-server/pom.xml" />
-        <option value="$PROJECT_DIR$/eureka/eureka/pom.xml" />
+        <option value="$PROJECT_DIR$/gateway/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/out" />
-  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="17" project-jdk-type="JavaSDK" />
 </project>
