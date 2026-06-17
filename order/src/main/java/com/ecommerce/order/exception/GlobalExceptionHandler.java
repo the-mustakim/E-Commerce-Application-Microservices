@@ -30,4 +30,16 @@ public class GlobalExceptionHandler {
         ));
     }
 
+    @ExceptionHandler(ServiceUnavailableException.class)
+    public ResponseEntity<Map<String, Object>> handleServiceUnavailableException(
+            ServiceUnavailableException exception) {
+
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+                .body(Map.of(
+                        "timestamp", LocalDateTime.now(),
+                        "status", HttpStatus.SERVICE_UNAVAILABLE.value(),
+                        "message", exception.getMessage()
+                ));
+    }
+
 }
