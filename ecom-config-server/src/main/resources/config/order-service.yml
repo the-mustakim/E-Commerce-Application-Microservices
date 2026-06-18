@@ -22,10 +22,20 @@ spring:
         show-sql: true
 
     rabbitmq:
-        host: localhost
-        port: 5672
-        username: ${RB_USERNAME}
-        password: ${RB_PASSWORD}
+        host: ${RB_HOST:localhost}
+        port: ${RB_PORT:5672}
+        username: ${RB_USERNAME:guest}
+        password: ${RB_PASSWORD:guest}
+        connection-timeout: 30000
+
+#RabbitMQ Configs
+rabbitmq:
+    exchange:
+        name: order.exchange
+    queue:
+        name: order.queue
+    routing:
+        key: order.tracking
 
 management:
     endpoints:

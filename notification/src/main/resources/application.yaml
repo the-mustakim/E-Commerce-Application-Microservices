@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: notification
+
+  rabbitmq:
+    host: ${RB_HOST:localhost}
+    port: ${RB_PORT:5672}
+    username: ${RB_USERNAME:guest}
+    password: ${RB_PASSWORD:guest}
+    connection-timeout: 30000
+
+#RabbitMQ Configs
+rabbitmq:
+  exchange:
+    name: order.exchange
+  queue:
+    name: order.queue
+  routing:
+    key: order.tracking
+
+server:
+  port: 8084

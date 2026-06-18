@@ -47,7 +47,7 @@ public class GatewayConfig {
 //                                "/api/users${segment}"))
                         .uri("lb://USER-SERVICE"))
                 .route("order-service", r -> r
-                        .path("/api/order/**", "/api/cart/**")
+                        .path("/api/orders/**", "/api/cart/**")
 //                        .filters(f -> f.rewritePath("/(?<segment>.*)",
 //                                "/api/${segment}"))
                         .uri("lb://ORDER-SERVICE"))

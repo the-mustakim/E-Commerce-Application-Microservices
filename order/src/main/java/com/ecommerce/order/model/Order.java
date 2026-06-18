@@ -1,9 +1,7 @@
 package com.ecommerce.order.model;
 import com.ecommerce.order.enums.OrderStatus;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -14,9 +12,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "Orders")
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class Order{
 
     @Id
